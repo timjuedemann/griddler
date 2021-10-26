@@ -16,7 +16,7 @@ Griddler currently consists of a single SASS mixin called `createGrid()` that ac
 createGrid($cols, $gutter, $margin: null, $color: red);
 ```
 
-**Test**
+**Parameters**
 
 | Name | Description | Accepted values | Default |
 |:---|---|---|---:|
@@ -33,6 +33,7 @@ Since the actual grid is based on an absolutely positioned `:after` pseudo eleme
 .container {
 	width: 960px;
 	margin: 0 auto;
+	position: relative; // Element needs to be positioned.
 	
 	@include createGrid(12, 24px); // Creates a 12 column grid with a 24px gutter.
 }
