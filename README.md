@@ -1,4 +1,4 @@
-# Coldmine
+# Griddler
 
 Griddler is a SASS mixin that uses stepped CSS gradients to overlay any positioned element with a column grid of your choice. It probably makes the most sense to be used on the body element but it’s really up to you. 
 
