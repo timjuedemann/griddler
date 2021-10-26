@@ -1,0 +1,65 @@
+@mixin createColumns($cols, $gutter, $color) {
+  $list: ();
+  $stack: ();
+  $c1: $color;
+  $c0: transparent;
+
+  @for $i from 0 through $cols - 1 {
+    $per1: 100% / $cols * $i;
+    $per2: 100% / $cols * ($i + 1);
+    $space: $gutter / 2;
+
+    $s0: if($i > 0, $c0 calc(#{$per1} + #{$space}), $c0 0%);
+    $s1: if($i > 0, $c1 calc(#{$per1} + #{$space}), $c1 0%);
+    $s2: if($i < $cols - 1, $c1 calc(#{$per2} - #{$space}), $c1 100%);
+    $s3: if($i < $cols - 1, $c0 calc(#{$per2} - #{$space}), $c0 100%);
+    $s4: if($i < $cols - 1, $c0 calc(#{$per2} + #{$space}), $c0 100%);
+
+    $list: if($i > 0, append($list, $s0, $separator: comma), $list);
+    $list: append($list, $s1, $separator: comma);
+    $list: append($list, $s2, $separator: comma);
+    $list: if($i < $cols - 1, append($list, $s3, $separator: comma), $list);
+    $list: if($i < $cols - 1, append($list, $s4, $separator: comma), $list);
+
+    $stack: append($stack, linear-gradient(to right, $list), $separator: comma);
+
+    $list: ();
+  }
+
+  background: $stack;
+}
+
+@mixin createRows($height) {
+  $s0: $height - 1;
+  $s1: $height;
+
+  background-image: repeating-linear-gradient(
+    to bottom,
+    transparent,
+    transparent $s0,
+    red $s1
+  );
+}
+
+@mixin createGrid($cols, $gutter, $margin: null, $color: red) {
+  position: relative;
+
+  &:after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    @if ($margin != null) {
+      width: calc(100% - #{$margin * 2});
+      margin: 0 $margin;
+    } @else {
+      width: 100%;
+    }
+    z-index: 2147483647;
+    opacity: 0.2;
+    pointer-events: none;
+  }
+
+  &:after {
+    @include createColumns($cols, $gutter, $color);
+  }
+}
