@@ -1,14 +1,14 @@
 # Coldmine
 
-Coldmine is a SASS mixin that uses stepped CSS gradients to overlay any positioned element with a column grid of your choice. It probably makes the most sense to be used on the body element but it’s really up to you. 
+Griddler is a SASS mixin that uses stepped CSS gradients to overlay any positioned element with a column grid of your choice. It probably makes the most sense to be used on the body element but it’s really up to you. 
 
 Have any suggestions or feedback? [Reach out!](mailto:mail@timjuedemann.de)
 
 ## Installation
-`npm install coldmine` or if you're old-school download and import `coldmine` ✌️
+`npm install griddler` or if you're old-school download and import `griddler` ✌️
 
 ## Usage
-Coldmine currently consists of a single SASS mixin called `createGrid()` that accepts a total of 4 parameters.
+Griddler currently consists of a single SASS mixin called `createGrid()` that accepts a total of 4 parameters.
 
 **Template**
 
@@ -19,8 +19,8 @@ createGrid($cols, $gutter, $margin: null, $color: red);
 **Test**
 
 | Name | Description | Accepted values | Default |
-|---|---|---|
-| `$cols` | The number of columns the grid should consist of. |Unitless number| |
+|:---|---|---|---:|
+| `$cols` | The number of columns the grid should consist of. | Unitless number| |
 | `$gutter` | The gutter width separating the respective grid columns. | Any valid CSS unit | |
 | `$margin` | The horizontal offset from the edges of the container that `createGrid()` is set on. | Any valid CSS unit | `0` |
 | `$color` | The color the grid columns are displayed in. The default opacity is currently fixed to a value of `0.2` which seems like a sensible value for the majority of use cases. | Any valid CSS color | `red` |
